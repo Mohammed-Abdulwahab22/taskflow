@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import authRoutes from './routes/authRoutes';
-import taskRoutes from './routes/taskRoutes';
+// import taskRoutes from './routes/taskRoutes';
 import { verifyToken } from "./middleware/auth";
 
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-app.use('/api/tasks', verifyToken, taskRoutes);
+// app.use('/api/tasks', verifyToken, taskRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
