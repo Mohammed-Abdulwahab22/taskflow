@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
 import "../styles/Login.css"
+import { loginUser } from '../api/auth';
 
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-    const handleLogin = (e: React.FormEvent) => {
+
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Login attempted with", { email, password });
-    }
+        setError(""); 
+        
+        try {
+            const data = await loginUser(email, password);
+            localStorage.setItem("token", data.token);
+            console.log("Login successful:", data);
+
+            // Redirect to dashboard or home page
+        } catch (error) {
+            console.error("Login failed:", error);
+            setError("Login failed. Please check your credentials.");
+        }
+
+    };
 
     return (
         <div className='login-page'>
