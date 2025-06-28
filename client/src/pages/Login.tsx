@@ -13,20 +13,24 @@ export const Login = () => {
   return (
     <div className='login-page'>
         <form className='login-form' onSubmit={handleLogin}>
-            <h2>Login</h2>
-            <label>Email:</label>
+            <h1>TaskFlow</h1>
+            <h2>Sign In To Your Account</h2>
+            <label>Email Address</label>
             <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required/>
-            <label>Password:</label>
+            <label>Password</label>
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required/>
+
                 <button type="submit">Login</button>
+
+            <p>Don't have an account? <a href="/register">Register</a></p>
 
                 </form>
          
