@@ -11,3 +11,12 @@ export async function loginUser (email: string, password: string) {
         throw error; 
     }
 }   
+
+export async function registerUser(email: string, password: string) {
+  const response = await axios.post(`${API_BASE}/auth/register`, {
+    email,
+    password,
+  });
+
+  return response.data; // { token }
+}
