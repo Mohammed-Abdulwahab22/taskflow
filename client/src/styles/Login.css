@@ -10,7 +10,7 @@
 .login-form{
     background: #f8fafc;
     padding: 30px;
-    width: 320px;
+    width: 400px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@
     border-radius: 50px;
     margin-bottom: 15px;
     background: #ffffff;
+    color: #1e293b;
 }
 
 .login-form button{
