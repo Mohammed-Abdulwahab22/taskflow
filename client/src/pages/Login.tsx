@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
+
+
 import "../styles/Login.css"
 import { loginUser } from '../api/auth';
 
@@ -6,18 +9,21 @@ export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(""); 
-        
+        setError("");
+
         try {
             const data = await loginUser(email, password);
             localStorage.setItem("token", data.token);
             console.log("Login successful:", data);
 
             // Redirect to dashboard or home page
+            navigate("/dashboard");
+
         } catch (error) {
             console.error("Login failed:", error);
             setError("Login failed. Please check your credentials.");
