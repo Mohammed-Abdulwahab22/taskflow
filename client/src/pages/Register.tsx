@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "../styles/Login.css"; // reuse styles
 import { registerUser } from "../api/auth";
 
@@ -7,6 +9,7 @@ export const Register = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -18,10 +21,12 @@ export const Register = () => {
         }
 
         try {
-            const data = await registerUser(email, password);
-            localStorage.setItem("token", data.token);
+            await registerUser(email, password);
+            // localStorage.setItem("token", data.token);
             console.log("Registered and logged in ✅");
-            // TODO: redirect
+
+            navigate("/login");
+
         } catch (err: any) {
             console.error(err);
             setError("Failed to register. Email might already be used.");
