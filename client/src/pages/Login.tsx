@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 import "../styles/Login.css"
@@ -8,13 +9,11 @@ import { loginUser } from '../api/auth';
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
     const navigate = useNavigate();
 
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError("");
 
         try {
             const data = await loginUser(email, password);
@@ -22,11 +21,11 @@ export const Login = () => {
             console.log("Login successful:", data);
 
             // Redirect to dashboard or home page
+            toast.success("Login successful! Redirecting to dashboard...");
             navigate("/dashboard");
 
         } catch (error) {
-            console.error("Login failed:", error);
-            setError("Login failed. Please check your credentials.");
+            toast.error("Login failed. Please check your credentials.");
         }
 
     };

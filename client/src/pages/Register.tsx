@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "../styles/Login.css"; // reuse styles
 import { registerUser } from "../api/auth";
@@ -8,15 +9,13 @@ export const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError("");
 
         if (password !== confirmPassword) {
-            setError("Passwords do not match.");
+            toast.error("Passwords do not match.");
             return;
         }
 
@@ -25,11 +24,12 @@ export const Register = () => {
             // localStorage.setItem("token", data.token);
             console.log("Registered and logged in ✅");
 
+            toast.success("Account created successfully. Please log in.");
             navigate("/login");
 
         } catch (err: any) {
             console.error(err);
-            setError("Failed to register. Email might already be used.");
+            toast.error("Registration failed. Please try again.");
         }
     };
 
@@ -65,7 +65,6 @@ export const Register = () => {
 
                 <button type="submit">Register</button>
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
 
                 <p>
                     Already have an account? <a href="/login">Login</a>
