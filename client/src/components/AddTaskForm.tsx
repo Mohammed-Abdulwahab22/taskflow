@@ -1,7 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import "../styles/AddTaskForm.css";
 
 const AddTaskForm = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("pending");
+  const [priority, setPriority] = useState("medium");
+  const [dueDate, setDueDate] = useState(new Date().toISOString().split("T")[0]); 
+  const [tags, setTags] = useState<string[]>([]);
+  const [createdAt, setCreatedAt] = useState(new Date().toISOString());
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // Logic to handle form submission
+  };
+
   return (
     <div className="add-task-form">
       <h3 className="form-title">Add New Task</h3>
