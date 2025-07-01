@@ -7,17 +7,15 @@ import "../styles/AddTaskForm.css";
 const AddTaskForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  // const [status, setStatus] = useState("pending");
   const [priority, setPriority] = useState("medium");
   const [dueDate, setDueDate] = useState(new Date().toISOString().split("T")[0]);
   const [tags, setTags] = useState<string[]>([]);
-  // const [createdAt, setCreatedAt] = useState(new Date().toISOString());
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       const createdAt = new Date().toISOString();
-      const status = "todo"; // default status
+      const status = "todo"; 
 
       await addTask(title, description, status, priority, dueDate, tags, createdAt);
       toast.success("Task added successfully!");

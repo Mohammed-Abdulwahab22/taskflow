@@ -18,9 +18,7 @@ export const Login = () => {
         try {
             const data = await loginUser(email, password);
             localStorage.setItem("token", data.token);
-            console.log("Login successful:", data);
 
-            // Redirect to dashboard or home page
             toast.success("Login successful! Redirecting to dashboard...");
             navigate("/dashboard");
 
