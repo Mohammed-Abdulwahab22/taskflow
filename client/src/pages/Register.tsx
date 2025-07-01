@@ -22,7 +22,7 @@ export const Register = () => {
         try {
             await registerUser(email, password);
             // localStorage.setItem("token", data.token);
-            console.log("Registered and logged in ✅");
+            // console.log("Registered and logged in ✅");
 
             toast.success("Account created successfully. Please log in.");
             navigate("/login");
