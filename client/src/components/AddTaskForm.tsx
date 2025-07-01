@@ -1,4 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+
+import { addTask } from "../api/addTask";
 import "../styles/AddTaskForm.css";
 
 const AddTaskForm = () => {
@@ -6,24 +9,49 @@ const AddTaskForm = () => {
   const [description, setDescription] = useState("");
   // const [status, setStatus] = useState("pending");
   const [priority, setPriority] = useState("medium");
-  const [dueDate, setDueDate] = useState(new Date().toISOString().split("T")[0]); 
+  const [dueDate, setDueDate] = useState(new Date().toISOString().split("T")[0]);
   const [tags, setTags] = useState<string[]>([]);
   // const [createdAt, setCreatedAt] = useState(new Date().toISOString());
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Logic to handle form submission
+    try {
+      const createdAt = new Date().toISOString();
+      const status = "todo"; // default status
+
+      await addTask(title, description, status, priority, dueDate, tags, createdAt);
+      toast.success("Task added successfully!");
+
+      setTitle("");
+      setDescription("");
+      setPriority("medium");
+      setDueDate(new Date().toISOString().split("T")[0]);
+      setTags([]);
+    } catch (err) {
+      toast.error("Failed to add task.");
+    }
+
+
   };
 
   return (
     <div className="add-task-form">
       <h3 className="form-title">Add New Task</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Title</label>
-        <input type="text" placeholder="Task title" />
+        <input
+          type="text"
+          placeholder="Task title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
         <label>Description</label>
-        <textarea placeholder="Optional description"></textarea>
+        <textarea
+          placeholder="Optional description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
 
         <label>Priority</label>
         <select className="priority-select" value={priority} onChange={(e) => setPriority(e.target.value)}>
@@ -41,9 +69,14 @@ const AddTaskForm = () => {
         />
 
         <label>Due Date</label>
-        <input type="date" />
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          min={new Date().toISOString().split("T")[0]}
+        />
 
-        <button type="submit">Add Task</button>
+        <button type="submit" >Add Task</button>
       </form>
     </div>
   );
