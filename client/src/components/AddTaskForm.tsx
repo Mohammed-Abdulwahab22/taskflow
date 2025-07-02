@@ -4,7 +4,24 @@ import { toast } from "react-toastify";
 import { addTask } from "../api/addTask";
 import "../styles/AddTaskForm.css";
 
-const AddTaskForm = () => {
+type Task = {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  priority: string;
+  dueDate: string;
+  tags: string[];
+  userId: string;
+  createdAt: string;
+};
+
+type Props = {
+  onTaskAdded: (newTask: Task) => void;
+};
+
+
+const AddTaskForm : React.FC<Props> = ({onTaskAdded}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("medium");
@@ -17,7 +34,8 @@ const AddTaskForm = () => {
       const createdAt = new Date().toISOString();
       const status = "todo"; 
 
-      await addTask(title, description, status, priority, dueDate, tags, createdAt);
+      const newTask = await addTask(title, description, status, priority, dueDate, tags, createdAt);
+      onTaskAdded(newTask);
       toast.success("Task added successfully!");
 
       setTitle("");

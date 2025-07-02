@@ -43,7 +43,7 @@ export const Dashboard = () => {
       <h2>Welcome to TaskFlow 👋</h2>
       <div className="dashboard-content">
         <div className="add-task-section">
-          <AddTaskForm />
+          <AddTaskForm onTaskAdded={(tasks) => setTasks((prev) => [tasks, ...prev])}/>
         </div>
         <div className="task-list-section">
           {!loading && Array.isArray(tasks) && tasks.length > 0 && (
