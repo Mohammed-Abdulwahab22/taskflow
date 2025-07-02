@@ -1,7 +1,12 @@
 import React from 'react'
+import '../styles/DashboardSidebar.css';
 
 export const DashboardSidebar = () => {
   return (
-    <div>DashboardSidebar</div>
+    <div className='dashboard-sidebar'>
+        
+        DashboardSidebar
+
+    </div>
   )
 }
