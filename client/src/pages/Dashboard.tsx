@@ -41,7 +41,6 @@ export const Dashboard = () => {
   return (
     <div className="dashboard-page">
       <h2>Welcome to TaskFlow 👋</h2>
-     
     </div>
   );
 };
