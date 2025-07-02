@@ -54,7 +54,7 @@ const AddTaskForm = () => {
         <label>Priority</label>
         <select className="priority-select" value={priority} onChange={(e) => setPriority(e.target.value)}>
           <option value="low">Low</option>
-          <option value="medium" selected>Medium</option>
+          <option value="medium" defaultChecked>Medium</option>
           <option value="high">High</option>
           <option value="urgent">Urgent</option>
         </select>
