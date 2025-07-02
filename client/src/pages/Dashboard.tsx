@@ -5,6 +5,7 @@ import AddTaskForm from "../components/AddTaskForm";
 import "../styles/Dashboard.css";
 import { toast } from "react-toastify";
 import { getTasks } from "../api/getTasks";
+import { DashboardSidebar } from "../components/DashboardSidebar";
 
 type Task = {
   id: string;
@@ -40,7 +41,7 @@ export const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      <h2>Welcome to TaskFlow 👋</h2>
+      <DashboardSidebar/>
     </div>
   );
 };
