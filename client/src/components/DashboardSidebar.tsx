@@ -18,8 +18,8 @@ export const DashboardSidebar = () => {
     <div className='dashboard-sidebar'>
 
       <div className='dashboard-sidebar-header'>
-        <h3 className='logged-in-email'>{email}</h3>
-        <button className='logout-button'  onClick={()=>(handleLogout())}>Logout</button>
+        <h3 className="logged-in-email" title={email}>{email}</h3>
+        <button className='logout-button' onClick={() => (handleLogout())}>Logout</button>
       </div>
 
     </div>
