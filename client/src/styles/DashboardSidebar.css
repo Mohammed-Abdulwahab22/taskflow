@@ -40,3 +40,19 @@
   font-size: 0.95rem;
   flex-shrink: 0;     
 }
+
+.add-task-form-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-task-button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}

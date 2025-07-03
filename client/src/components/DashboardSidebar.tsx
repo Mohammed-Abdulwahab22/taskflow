@@ -14,12 +14,17 @@ export const DashboardSidebar = () => {
     navigate('/login');
     toast.success("Logout successful! Redirecting to login page...");
   };
+
   return (
     <div className='dashboard-sidebar'>
 
       <div className='dashboard-sidebar-header'>
         <h3 className="logged-in-email" title={email}>{email}</h3>
         <button className='logout-button' onClick={() => (handleLogout())}>Logout</button>
+      </div>
+
+      <div className='add-task-form-button' >
+        
       </div>
 
     </div>
