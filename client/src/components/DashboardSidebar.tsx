@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Modal from 'react-modal';
 
 import '../styles/DashboardSidebar.css';
+import AddTaskForm from './AddTaskForm';
 
 const customStyles = {
   content: {
@@ -49,24 +50,17 @@ export const DashboardSidebar = () => {
       <div className='add-task-form-button' onClick={openModal}>
         <span className='add-task-icon'>+</span>
         <span className='add-task-text'>Add Task</span>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-        </Modal>
-      </div>
 
+      </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <button onClick={closeModal}>close</button>
+        <AddTaskForm onTaskAdded={closeModal} />
+      </Modal>
     </div>
   )
 }
