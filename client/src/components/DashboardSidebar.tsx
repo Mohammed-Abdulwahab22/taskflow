@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Modal from 'react-modal';
+import { FaRegTimesCircle  } from 'react-icons/fa'; 
 
 import '../styles/DashboardSidebar.css';
 import AddTaskForm from './AddTaskForm';
@@ -58,7 +59,19 @@ export const DashboardSidebar = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'flex-end', 
+          marginBottom: '10px' 
+        }}>
+          <FaRegTimesCircle 
+            size={30}
+            style={{ cursor: 'pointer' }}
+            color='red'
+            title="Close" 
+            onClick={closeModal}
+          />
+        </div>
         <AddTaskForm onTaskAdded={closeModal} />
       </Modal>
     </div>
