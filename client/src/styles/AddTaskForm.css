@@ -1,6 +1,7 @@
 .add-task-form {
   display: flex;
   flex-direction: column;
+  width: 50vw;
 }
 
 .add-task-form form {
