@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -11,6 +11,11 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            navigate("/dashboard");
+        }
+    }, []);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -18,7 +23,7 @@ export const Login = () => {
         try {
             const data = await loginUser(email, password);
             localStorage.setItem("token", data.token);
-            localStorage.setItem("email" ,email);
+            localStorage.setItem("email", email);
             toast.success("Login successful! Redirecting to dashboard...");
             navigate("/dashboard");
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -11,6 +11,12 @@ export const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            navigate("/dashboard");
+        }
+    }, []);
+
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -21,7 +27,7 @@ export const Register = () => {
 
         try {
             await registerUser(email, password);
-          
+
 
             toast.success("Account created successfully. Please log in.");
             navigate("/login");
