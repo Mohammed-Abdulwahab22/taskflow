@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Modal from 'react-modal';
-import { FaRegTimesCircle  } from 'react-icons/fa'; 
+import { FaRegTimesCircle, FaPlus } from 'react-icons/fa';
 
 import '../styles/DashboardSidebar.css';
 import AddTaskForm from './AddTaskForm';
@@ -49,8 +49,8 @@ export const DashboardSidebar = () => {
       </div>
 
       <div className='add-task-form-button' onClick={openModal}>
-        <span className='add-task-icon'>+</span>
         <span className='add-task-text'>Add Task</span>
+        <FaPlus className='add-task-icon' />
 
       </div>
       <Modal
@@ -61,14 +61,14 @@ export const DashboardSidebar = () => {
       >
         <div style={{
           display: 'flex',
-          justifyContent: 'flex-end', 
-          marginBottom: '10px' 
+          justifyContent: 'flex-end',
+          marginBottom: '10px'
         }}>
-          <FaRegTimesCircle 
+          <FaRegTimesCircle
             size={30}
             style={{ cursor: 'pointer' }}
             color='red'
-            title="Close" 
+            title="Close"
             onClick={closeModal}
           />
         </div>
