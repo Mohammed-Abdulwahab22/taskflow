@@ -3,21 +3,24 @@ import React from 'react';
 import '../styles/TaskCard.css';
 
 type TaskCardProps = {
+  id: string;
   title: string;
   description: string;
   priority: string;
   status: string;
   dueDate: string;
   tags: string[];
+  onDelete: (id: string) => void;
 };
-
 export const TaskCard: React.FC<TaskCardProps> = ({
   title,
   description,
   priority,
   status,
   dueDate,
-  tags
+  tags,
+  onDelete,
+  id,
 }) => {
   return (
     <div className={`task-card priority-${priority.toLowerCase()} status-${status.toLowerCase()}`}>
@@ -29,6 +32,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       <div className="task-footer">
         <span className="task-priority">Priority: {priority}</span>
         <span className="task-due-date">Due: {dueDate}</span>
+        <button className="done-button" onClick={() => onDelete(id)}>
+          Mark as Done
+        </button>
       </div>
       {tags.length > 0 && (
         <div className="task-tags">

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { getTasks } from "../api/getTasks";
 import { DashboardSidebar } from "../components/DashboardSidebar";
 import { TaskCard } from "../components/TaskCard";
+import { deleteTask } from "../api/deleteTask";
 
 type Task = {
   id: string;
@@ -40,6 +41,17 @@ export const Dashboard = () => {
     fetchTasks();
   }, []);
 
+  const handleDelete = async (taskId: string) => {
+    try {
+      await deleteTask(taskId);
+      setTasks((prev) => prev.filter((t) => t.id !== taskId));
+      toast.success("Task marked as done and removed!");
+    } catch {
+      toast.error("Failed to delete task.");
+    }
+  };
+
+
   return (
     <div className="dashboard-page">
       <DashboardSidebar />
@@ -49,12 +61,14 @@ export const Dashboard = () => {
         {!loading && tasks.map((task) => (
           <TaskCard
             key={task.id}
+            id={task.id}
             title={task.title}
             description={task.description}
             priority={task.priority}
             status={task.status}
             dueDate={task.dueDate}
             tags={task.tags}
+            onDelete={handleDelete}
           />
         ))}
       </div>

@@ -76,3 +76,19 @@
 .priority-urgent {
   border-left: 5px solid #ef4444;
 }
+
+.done-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #10b981; /* green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.done-button:hover {
+  background-color: #059669;
+}
