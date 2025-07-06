@@ -43,7 +43,6 @@ export const Dashboard = () => {
   return (
     <div className="dashboard-page">
       <DashboardSidebar/>
-      <TaskCard/>
     </div>
   );
 };
