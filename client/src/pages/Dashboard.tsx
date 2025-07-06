@@ -6,6 +6,7 @@ import "../styles/Dashboard.css";
 import { toast } from "react-toastify";
 import { getTasks } from "../api/getTasks";
 import { DashboardSidebar } from "../components/DashboardSidebar";
+import { TaskCard } from "../components/TaskCard";
 
 type Task = {
   id: string;
@@ -42,6 +43,7 @@ export const Dashboard = () => {
   return (
     <div className="dashboard-page">
       <DashboardSidebar/>
+      <TaskCard/>
     </div>
   );
 };
