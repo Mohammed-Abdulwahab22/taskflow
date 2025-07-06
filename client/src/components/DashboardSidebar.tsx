@@ -19,8 +19,22 @@ const customStyles = {
 };
 
 Modal.setAppElement('#root');
+type Task = {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  priority: string;
+  dueDate: string;
+  tags: string[];
+  userId: string;
+  createdAt: string;
+};
 
-export const DashboardSidebar = () => {
+type Props = {
+  onTaskAdded: (task: Task) => void;
+};
+export const DashboardSidebar: React.FC<Props> = ({ onTaskAdded }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -72,8 +86,10 @@ export const DashboardSidebar = () => {
             onClick={closeModal}
           />
         </div>
-        <AddTaskForm onTaskAdded={closeModal} />
-      </Modal>
+        <AddTaskForm onTaskAdded={(newTask) => {
+          onTaskAdded(newTask);
+          closeModal();
+        }} />      </Modal>
     </div>
   )
 }

@@ -54,7 +54,7 @@ export const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      <DashboardSidebar />
+      <DashboardSidebar onTaskAdded={(newTask) => setTasks(prev => [newTask, ...prev])} />
       <div className="task-list-section">
         {loading && <p>Loading tasks...</p>}
         {!loading && tasks.length === 0 && <p>No tasks yet. Add your first task!</p>}
