@@ -3,7 +3,7 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  gap: 4vw;
+  gap: 2vw;
   /* align-items: center; */
   /* justify-content: center; */
   background: #f8fafc;
@@ -12,3 +12,11 @@
 }
 
 
+.task-list-section {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

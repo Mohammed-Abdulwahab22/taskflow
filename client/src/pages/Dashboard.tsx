@@ -42,7 +42,22 @@ export const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      <DashboardSidebar/>
+      <DashboardSidebar />
+      <div className="task-list-section">
+        {loading && <p>Loading tasks...</p>}
+        {!loading && tasks.length === 0 && <p>No tasks yet. Add your first task!</p>}
+        {!loading && tasks.map((task) => (
+          <TaskCard
+            key={task.id}
+            title={task.title}
+            description={task.description}
+            priority={task.priority}
+            status={task.status}
+            dueDate={task.dueDate}
+            tags={task.tags}
+          />
+        ))}
+      </div>
     </div>
   );
 };
